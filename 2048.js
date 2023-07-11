@@ -10,7 +10,6 @@ window.onload = function () {
 
 setInterval(() => {
     gameOver();
-    // console.log("call");
 }, 100);
 
 function setGame() {
@@ -87,7 +86,6 @@ function slide(row) {
 
 function slideLeft() {
     let oldBoard = [...board];
-    // console.log(oldBoard);
     let flag = false, i = 0;
     for (let r = 0; r < rows; r++) {
         let row = board[r];
@@ -112,7 +110,6 @@ function slideLeft() {
 
 function slideRight() {
     let oldBoard = [...board];
-    // console.log(oldBoard);
     let flag = false, i = 0;
     for (let r = 0; r < rows; r++) {
         let row = board[r];
@@ -146,7 +143,6 @@ function slideUp(){
         }
         oldBoard.push(oldRow);
     }
-    // console.log(oldBoard);
     let flag = false, i = 0;
     for(let c = 0; c < columns; c++){
         let row = [];
@@ -182,7 +178,6 @@ function slideDown(){
         }
         oldBoard.push(oldRow);
     }
-    // console.log(oldBoard);
     let flag = false, i = 0;
     for(let c = 0; c < columns; c++){
         let row = [];
@@ -212,7 +207,6 @@ function slideDown(){
 }
 
 function gameOver(){
-
     let over = true;
     for(let r = 0; r < rows-1; r++){
         for(let c = 0; c < columns-1; c++){
@@ -225,15 +219,16 @@ function gameOver(){
         }
     }
     if(over) {
+        alert(`GAME OVER. SCORE = ${score}`)
         score = 0;
-        alert(`GAME OVER. SCORE = ${score}`);
+        document.getElementById("score").innerText = score;
         board=[];
         for(let r = 0; r <rows; r++){
             for(let c = 0; c< columns; c++){
-
+                
                 let chd = document.getElementById(`${r}-${c}`);
                 document.getElementById("board").removeChild(chd);
-
+                
             }
         }
         setGame();
